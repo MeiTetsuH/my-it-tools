@@ -1,3 +1,18 @@
 {
-  "routes": [{ "handle": "filesystem" }, { "src": "/(.*)", "dest": "/index.html" }]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": {
+        "X-Robots-Tag": "noindex, nofollow"
+      },
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
