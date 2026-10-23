@@ -322,8 +322,10 @@ tools:
     description: 获取有关当前设备的信息（屏幕大小、像素比率、用户代理…）
 
   pdf-signature-checker:
+    unverified: '未验证：此工具仅读取嵌入的证书信息。在安全修复完成前，不检查签名有效性或可信性。请使用可信的 PDF 应用验证签名。'
+    read-error: '无法从此文件读取签名信息。这不代表文件未签名，也不代表签名有效。'
     title: PDF签名检查器
-    description: '验证PDF文件的签名。签名的PDF文件包含一个或多个签名，可用于确定文件的内容在签名后是否已被更改。'
+    description: '读取 PDF 中嵌入的证书信息，不验证签名有效性或可信性。'
 
   json-minify:
     title: JSON 压缩

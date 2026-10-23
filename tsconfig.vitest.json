@@ -3,7 +3,15 @@
   "exclude": [],
   "compilerOptions": {
     "composite": true,
-    "lib": [],
-    "types": ["node", "jsdom", "unplugin-icons/types/vue"]
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "node",
+      "jsdom",
+      "unplugin-icons/types/vue"
+    ]
   }
 }

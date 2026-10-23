@@ -326,8 +326,10 @@ tools:
     description: Get information about your current device (screen size, pixel-ratio, user agent, ...)
 
   pdf-signature-checker:
+    unverified: 'Unverified: this tool only reads embedded certificate information. Signature validity and trust are not checked while a security fix is pending. Use a trusted PDF application to verify signatures.'
+    read-error: 'Unable to read signature information from this file. This does not establish whether it is signed or valid.'
     title: PDF signature checker
-    description: Verify the signatures of a PDF file. A signed PDF file contains one or more signatures that may be used to determine whether the contents of the file have been altered since the file was signed.
+    description: 'Read embedded PDF certificate information without verifying signature validity or trust.'
 
   json-minify:
     title: JSON minify

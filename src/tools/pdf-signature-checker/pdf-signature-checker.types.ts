@@ -1,8 +1,5 @@
 export interface SignatureInfo {
-  verified: boolean
-  authenticity: boolean
-  integrity: boolean
-  expired: boolean
+  verification: 'unverified'
   meta: {
     certs: {
       clientCertificate?: boolean
@@ -29,11 +26,5 @@ export interface SignatureInfo {
       }
       pemCertificate: string
     }[]
-    signatureMeta: {
-      reason: string
-      contactInfo: string | null
-      location: string
-      name: string | null
-    }
   }
 }

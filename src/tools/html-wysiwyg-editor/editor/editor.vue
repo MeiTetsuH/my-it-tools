@@ -12,7 +12,7 @@ const html = useVModel(props, 'html', emit);
 
 const editor = new Editor({
   content: html.value,
-  extensions: [StarterKit],
+  extensions: [StarterKit.configure({ link: false, underline: false, listKeymap: false })],
 });
 
 editor.on('update', ({ editor }) => emit('update:html', editor.getHTML()));

@@ -327,7 +327,7 @@ tools:
 
   pdf-signature-checker:
     title: PDF signatur sjekker
-    description: Bekreft signaturen til en PDF fil. En signert PDF fil inneholder en eller flere signaturer som kan bli brukt til å bestemme om en fil har blitt endret etter at den var signert.
+    description: 'Les innebygd sertifikatinformasjon fra PDF uten å bekrefte signaturens gyldighet eller tillit.'
 
   json-minify:
     title: JSON minifiser

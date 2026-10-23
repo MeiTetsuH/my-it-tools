@@ -374,11 +374,7 @@ tools:
       Benutzeragent, ...) erhalten.
   pdf-signature-checker:
     title: PDF-Signaturprüfer
-    description: >-
-      Überprüfe die Signaturen einer PDF-Datei. Eine signierte PDF-Datei enthält
-      eine oder mehrere Signaturen, die verwendet werden können, um
-      festzustellen, ob der Inhalt der Datei seit dem Zeitpunkt der Signierung
-      geändert wurde.
+    description: 'Lese eingebettete PDF-Zertifikatsinformationen, ohne die Gültigkeit oder Vertrauenswürdigkeit der Signatur zu prüfen.'
   json-minify:
     title: JSON minifizieren
     description: >-

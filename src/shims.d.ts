@@ -35,7 +35,5 @@ declare module 'unicode-emoji-json' {
 }
 
 declare module 'pdf-signature-reader' {
-  const verifySignature: (pdf: ArrayBuffer) => ({signatures: SignatureInfo[]});
-
-  export default verifySignature;
+  export function getCertificatesInfoFromPDF(pdf: ArrayBuffer): import('./tools/pdf-signature-checker/pdf-signature-checker.types').SignatureInfo['meta']['certs'][];
 }

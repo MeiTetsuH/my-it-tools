@@ -56,7 +56,7 @@ export default defineConfig({
   ...(useWebServer
     && {
       webServer: {
-        command: 'npm run preview',
+        command: 'pnpm preview',
         url: 'http://localhost:5050',
         reuseExistingServer: !isCI,
       },

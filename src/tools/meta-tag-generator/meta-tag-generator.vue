@@ -72,7 +72,7 @@ const metaTags = computed(() => {
           :show-sort-button="true"
         />
 
-        <c-select
+        <n-select
           v-else-if="type === 'select'"
           v-model:value="metadata[key]"
           w-full

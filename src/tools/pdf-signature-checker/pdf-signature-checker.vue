@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import verifyPDF from 'pdf-signature-reader';
+import { readSignatureCertificates } from './pdf-signature-checker.service';
 import type { SignatureInfo } from './pdf-signature-checker.types';
 import { formatBytes } from '@/utils/convert';
 
+const { t } = useI18n();
 const signatures = ref<SignatureInfo[]>([]);
 const status = ref<'idle' | 'parsed' | 'error' | 'loading'>('idle');
 const file = ref<File | null>(null);
 
 async function onVerifyClicked(uploadedFile: File) {
   file.value = uploadedFile;
-  const fileBuffer = await uploadedFile.arrayBuffer();
-
   status.value = 'loading';
   try {
-    const { signatures: parsedSignatures } = verifyPDF(fileBuffer);
-    signatures.value = parsedSignatures;
+    const fileBuffer = await uploadedFile.arrayBuffer();
+    signatures.value = readSignatureCertificates(fileBuffer);
     status.value = 'parsed';
   }
   catch (e) {
@@ -27,6 +26,10 @@ async function onVerifyClicked(uploadedFile: File) {
 <template>
   <div style="flex: 0 0 100%">
     <div mx-auto max-w-600px>
+      <c-alert mb-4>
+        {{ t('tools.pdf-signature-checker.unverified') }}
+      </c-alert>
+
       <c-file-upload title="Drag and drop a PDF file here, or click to select a file" accept=".pdf" @file-upload="onVerifyClicked" />
 
       <c-card v-if="file" mt-4 flex gap-2>
@@ -41,7 +44,7 @@ async function onVerifyClicked(uploadedFile: File) {
 
       <div v-if="status === 'error'">
         <c-alert mt-4>
-          No signatures found in the provided file.
+          {{ t('tools.pdf-signature-checker.read-error') }}
         </c-alert>
       </div>
     </div>

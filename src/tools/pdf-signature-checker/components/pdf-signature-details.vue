@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { SignatureInfo } from '../pdf-signature-checker.types';
 
+type Certificate = SignatureInfo['meta']['certs'][number];
+
 const props = defineProps<{ signature: SignatureInfo }>();
 const { signature } = toRefs(props);
 
@@ -29,10 +31,10 @@ const certs = computed(() => signature.value.meta.certs.map((certificate, index)
         <c-key-value-list
           :items="[{
             label: 'Not before',
-            value: value.notBefore,
+            value: (value as Certificate['validityPeriod']).notBefore,
           }, {
             label: 'Not after',
-            value: value.notAfter,
+            value: (value as Certificate['validityPeriod']).notAfter,
           }]"
         />
       </template>
@@ -41,22 +43,22 @@ const certs = computed(() => signature.value.meta.certs.map((certificate, index)
         <c-key-value-list
           :items="[{
             label: 'Common name',
-            value: value.commonName,
+            value: (value as Certificate['issuedBy']).commonName,
           }, {
             label: 'Organization name',
-            value: value.organizationName,
+            value: (value as Certificate['issuedBy']).organizationName,
           }, {
             label: 'Country name',
-            value: value.countryName,
+            value: (value as Certificate['issuedBy']).countryName,
           }, {
             label: 'Locality name',
-            value: value.localityName,
+            value: (value as Certificate['issuedBy']).localityName,
           }, {
             label: 'Organizational unit name',
-            value: value.organizationalUnitName,
+            value: (value as Certificate['issuedBy']).organizationalUnitName,
           }, {
             label: 'State or province name',
-            value: value.stateOrProvinceName,
+            value: (value as Certificate['issuedBy']).stateOrProvinceName,
           }]"
         />
       </template>
@@ -65,28 +67,28 @@ const certs = computed(() => signature.value.meta.certs.map((certificate, index)
         <c-key-value-list
           :items="[{
             label: 'Common name',
-            value: value.commonName,
+            value: (value as Certificate['issuedTo']).commonName,
           }, {
             label: 'Organization name',
-            value: value.organizationName,
+            value: (value as Certificate['issuedTo']).organizationName,
           }, {
             label: 'Country name',
-            value: value.countryName,
+            value: (value as Certificate['issuedTo']).countryName,
           }, {
             label: 'Locality name',
-            value: value.localityName,
+            value: (value as Certificate['issuedTo']).localityName,
           }, {
             label: 'Organizational unit name',
-            value: value.organizationalUnitName,
+            value: (value as Certificate['issuedTo']).organizationalUnitName,
           }, {
             label: 'State or province name',
-            value: value.stateOrProvinceName,
+            value: (value as Certificate['issuedTo']).stateOrProvinceName,
           }]"
         />
       </template>
 
       <template #pemCertificate="{ value }">
-        <c-modal-value :value="value" label="View PEM cert">
+        <c-modal-value :value="String(value)" label="View PEM cert">
           <template #value>
             <div break-all text-xs>
               {{ value }}
